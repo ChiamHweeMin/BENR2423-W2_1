@@ -2,7 +2,7 @@ const supertest = require('supertest');
 const request = supertest('http://localhost:3000');
 
 describe('Express Route Test', function () {
-	it('should return hello world', async () => {
+	it('should return hello benr2423', async () => {
 		return request.get('/hello')
 			.expect(200)
 			.expect('Content-Type', /text/)
@@ -40,7 +40,7 @@ describe('Express Route Test', function () {
 	it('register', async () => {
 		return request
 			.post('/register')
-			.send({username: 'John', password: "10110" })
+			.send({username: 'Tonny', password: "32123" })
 			.expect('Content-Type', /text/)
 			.expect(200)
 			.then(response => {
