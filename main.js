@@ -15,53 +15,8 @@ MongoClient.connect(
 
 const express = require('express')
 const app = express()
-// const port = 3000
-const port = process.env.PORT || 3000
+const port = 3000
 
-const swaggerUi = require('swagger-ui-express')
-const swaggerJsdoc = require('swagger-jsdoc')
-const options = {
-	definition: {
-		openapi: '3.0.0',
-		info: {
-			title: 'MyVMS API',
-			version: '1.0.0',
-		},
-	},
-	apis: ['./main.js'],
-}
-const swaggerSpec = swaggerJsdoc(options);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-
-/**
- * @swagger
- * /login:
- *   post:
- *     description: User login
- *     requestBody:
- *       require: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               username:
- *                 type: string
- *               password:
- *                 type: string
- *     responses:
- *       200:
- *         description: Successful login
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/User'
- *       404:
- *         description: Login failed
- */
  app.get('/', (req, res) => {
 	res.send('Hello World!');
   });

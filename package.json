@@ -17,14 +17,5 @@
   "devDependencies": {
     "@shelf/jest-mongodb": "^2.2.1",
     "supertest": "^6.2.3"
-  },
-  "name": "lab7",
-  "version": "1.0.0",
-  "main": "main.js",
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "engines": {
-    "node": "14.8.0"
   }
 }
