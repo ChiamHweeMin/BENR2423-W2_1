@@ -1,0 +1,19 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "example.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.8"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

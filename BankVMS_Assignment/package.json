@@ -1,0 +1,29 @@
+{
+  "scripts": {
+    "start": "node main.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.7.0",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.4.0"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^3.0.1",
+    "jest": "^28.1.1",
+    "supertest": "^6.2.3"
+  },
+  "name": "bankvms",
+  "version": "1.0.0",
+  "description": "BENR2423 Bank Visitor Management System API",
+  "main": "main.js",
+  "author": "Chiam Hwee Min",
+  "license": "ISC",
+  "engines": {
+    "node": "14.18.0",
+    "npm": "8.5.5"
+  }
+}

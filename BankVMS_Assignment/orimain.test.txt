@@ -1,0 +1,455 @@
+const { response } = require('express');
+const supertest = require('supertest');
+const request = supertest('http://localhost:3000');
+
+/* 
+   Before test, make sure the database does not exist these documents - 
+   SampleVisitor1, SampleVisitorUpdate1, Reservation1, verifyReservation1, 
+   SampleAdmin1, SampleAdminUpdate1, SampleSecurity1, SampleSecurityUpdate1
+*/
+
+const SampleVisitor1 = {
+	"V_ID": 5,
+	"V_name": "Ion",
+	"V_age": 27,
+	"V_gender": "Male",
+	"V_ICnum": "950423-05-5555",
+	"V_email": "ion123@gmail.com",
+	"V_contact": "015-555 5555",
+	"V_blacklist": false,
+	"V_password": "87531"
+};
+
+const SampleVisitorUpdate1 = {
+	"V_ID": 5,
+	"V_name": "Ion",
+	"V_age": 27,
+	"V_gender": "Male",
+	"V_ICnum": "950423-05-5555",
+	"V_email": "ion123@gmail.com",
+	"V_contact": "015-731 2465",
+	"V_blacklist": false,
+	"V_password": "87531"
+};
+
+const Reservation1 = {
+    "R_ID": 104,
+    "V_ID": 5,
+    "V_name": "Ion",
+    "R_date": "2022-10-03",
+    "R_time": "09:00",
+    "No_Counter": 4,
+    "R_parkingLot": {
+        "Slot": "A11",
+        "No_Vehicle": "JHE 5321"
+    }
+}
+
+const verifyReservation1 = {
+    "R_ID": 104,
+    "V_ID": 5,
+    "V_name": "Ion",
+    "R_date": "2022-10-20",
+    "R_time": "15:00",
+    "No_Counter": 4,
+    "R_parkingLot": {
+        "Slot": "A18",
+        "No_Vehicle": "JHE 5321"
+    }
+}
+
+const SampleAdmin1 = {
+    "AdminName": "Ryan",
+    "AdminPassword": "Ryanpassword",
+    "AdminEmail": "ryan123@gmail.com",
+    "AdminContact": "013-778 0121"
+}
+
+const SampleAdminUpdate1 = {
+    "AdminName": "Ryan",
+    "AdminPassword": "Ryan123password",
+    "AdminEmail": "ryan334@gmail.com",
+    "AdminContact": "012-556 0121"
+};
+
+const SampleSecurity1 = {
+    "SecurityName": "Peter",
+    "SecurityPassword": "Peterpassword",
+    "SecurityEmail": "peter123@gmail.com",
+    "SecurityContact": "016-731 0231"
+}
+
+const SampleSecurityUpdate1 = {
+    "SecurityName": "Peter",
+    "SecurityPassword": "Peterpassword",
+    "SecurityEmail": "peter123@gmail.com",
+    "SecurityContact": "011-731 0231"
+}
+
+describe('Express Route Test', function () {
+
+	// Visitor test //
+
+	it('New visitor registration', async () => {
+		return request
+			.post('/admin/registerVisitor')
+			.send(SampleVisitor1)
+			.expect('Content-Type', /json/)
+			.expect(200).then(response => {
+				expect(response.body.V_ID).toBe(5);
+                expect(response.body.V_name).toBe("Ion");
+                expect(response.body.V_age).toBe(27);
+                expect(response.body.V_gender).toBe("Male");
+                expect(response.body.V_ICnum).toBe("950423-05-5555");
+                expect(response.body.V_email).toBe("ion123@gmail.com");
+                expect(response.body.V_contact).toBe("015-555 5555");
+                expect(response.body.V_blacklist).toBeFalsy();
+            });
+	});
+
+	it('Register with duplicate visitor ID', async () => {
+		return request
+			.post('/admin/registerVisitor')
+			.send(SampleVisitor1)
+			.expect('Content-Type', /text/)
+			.expect(404)
+			.then(response => {
+				expect(response.text).toEqual("The visitor's ID already exist!")
+			});
+	});
+
+	it('Visitor login successfully', async () => {
+		return request
+			.post('/loginVisitor')
+			.send({ V_ID: SampleVisitor1.V_ID, V_password: SampleVisitor1.V_password })
+			.expect('Content-Type', /json/)
+			.expect(200)
+			.then(response => {
+				expect(response.body.V_ID).toBe(5);
+                expect(response.body.V_name).toBe("Ion");
+                expect(response.body.V_age).toBe(27);
+                expect(response.body.V_gender).toBe("Male");
+                expect(response.body.V_ICnum).toBe("950423-05-5555");
+                expect(response.body.V_email).toBe("ion123@gmail.com");
+                expect(response.body.V_contact).toBe("015-555 5555");
+                expect(response.body.V_blacklist).toBeFalsy();
+			});
+	});
+
+	it('Visitor login invalid ID', async () => {
+		return request
+			.post('/loginVisitor')
+			.send({ V_ID: 2, V_password: SampleVisitor1.V_password })
+			.expect('Content-Type', /text/)
+			.expect(404).then(response => {
+				expect(response.text).toEqual("Login failed");
+			});
+	});
+
+	it('Visitor login invalid password', async () => {
+		return request
+			.post('/loginVisitor')
+			.send({ V_ID: SampleVisitor1.V_ID, V_password: "88831" })
+			.expect('Content-Type', /text/)
+			.expect(404).then(response => {
+				expect(response.text).toBe("Login failed");
+			});
+	});
+
+	it('Visitor update successfully', async () => {
+		return request
+			.patch('/admin/updateInfoVisitor/5')
+			.send({ V_ID: SampleVisitorUpdate1.V_ID, V_name: SampleVisitorUpdate1.V_name })
+			.send(SampleVisitorUpdate1)
+			.expect('Content-Type', /json/)
+			.expect(200)
+			.then(response => {
+				expect(response.body.V_ID).toBe(5);
+                expect(response.body.V_name).toBe("Ion");
+                expect(response.body.V_age).toBe(27);
+                expect(response.body.V_gender).toBe("Male");
+                expect(response.body.V_ICnum).toBe("950423-05-5555");
+                expect(response.body.V_email).toBe("ion123@gmail.com");
+                expect(response.body.V_contact).toBe("015-731 2465");
+                expect(response.body.V_blacklist).toBeFalsy();
+			});
+	});
+
+	it('Visitor update failed', async () => {
+		return request
+			.patch('/admin/updateInfoVisitor/115')
+			.send({ V_ID: 115, V_name: SampleVisitorUpdate1.V_name })
+			.send(SampleVisitorUpdate1)
+			.expect('Content-Type', /text/)
+			.expect(404)
+			.then(response => {
+				expect(response.text).toBe("404 Not Found");
+			});
+	});
+
+	it('Reservation create successfully', async () => {
+		return request
+			.post('/admin/createReservation/5')
+			.send({V_ID: SampleVisitorUpdate1.V_ID, V_name: SampleVisitorUpdate1.V_name})
+			.send(Reservation1)
+			.expect('Content-Type', /json/)
+			.expect(200).then(response => {
+				expect(response.body.R_ID).toBe(Reservation1.R_ID);
+				expect(response.body.V_ID).toBe(Reservation1.V_ID);
+                expect(response.body.V_name).toBe(Reservation1.V_name);
+                expect(response.body.R_date).toBe(Reservation1.R_date);
+                expect(response.body.R_time).toBe(Reservation1.R_time);
+                expect(response.body.No_Counter).toBe(Reservation1.No_Counter);
+                expect(response.body.R_parkingLot.Slot).toBe(Reservation1.R_parkingLot.Slot);
+                expect(response.body.R_parkingLot.No_Vehicle).toBe(Reservation1.R_parkingLot.No_Vehicle);
+            });
+	});
+
+	it('Create reservation failed' , async () => {
+		return request
+			.post('/admin/createReservation/115')
+			.send({V_ID: 115, V_name: SampleVisitorUpdate1.V_name})
+			.send(Reservation1)
+			.expect('Content-Type', /text/)
+			.expect(404).then(response => {
+				expect(response.text).toBe("404 Not Found");
+            });
+	});
+
+	it('Update reservation success', async () => {
+		return request
+			.patch('/admin/updateReservation/5')
+			.send({V_ID: SampleVisitorUpdate1.V_ID, V_name: SampleVisitorUpdate1.V_name})
+			.send(verifyReservation1)
+			.expect('Content-Type', /json/)
+			.expect(200).then(response => {
+				expect(response.body.R_ID).toBe(verifyReservation1.R_ID);
+				expect(response.body.V_ID).toBe(verifyReservation1.V_ID);
+                expect(response.body.V_name).toBe(verifyReservation1.V_name);
+                expect(response.body.R_date).toBe(verifyReservation1.R_date);
+                expect(response.body.R_time).toBe(verifyReservation1.R_time);
+                expect(response.body.No_Counter).toBe(verifyReservation1.No_Counter);
+                expect(response.body.R_parkingLot.Slot).toBe(verifyReservation1.R_parkingLot.Slot);
+                expect(response.body.R_parkingLot.No_Vehicle).toBe(verifyReservation1.R_parkingLot.No_Vehicle);
+            });
+	});
+
+	it('Update reservation failed', async () => {
+		return request
+			.patch('/admin/updateReservation/115')
+			.send({V_ID: 115, V_name: SampleVisitorUpdate1.V_name})
+			.send(verifyReservation1)
+			.expect('Content-Type', /text/)
+			.expect(404).then(response => {
+				expect(response.text).toBe("404 Not Found");
+            });
+	});
+
+    it('Visitor view Access Info', async () => {
+		return request
+			.get('/visitor/ReservationInfo/5')
+			.send({ V_ID: SampleVisitorUpdate1.V_ID })
+			.expect('Content-Type', /json/)
+			.expect(200).then(response => {
+                expect(response.body.R_ID).toBe(verifyReservation1.R_ID);
+                expect(response.body.V_ID).toBe(verifyReservation1.V_ID);
+                expect(response.body.V_name).toBe(verifyReservation1.V_name);
+                expect(response.body.R_date).toBe(verifyReservation1.R_date);
+                expect(response.body.R_time).toBe(verifyReservation1.R_time);
+                expect(response.body.No_Counter).toBe(verifyReservation1.No_Counter);
+                expect(response.body.R_parkingLot.Slot).toBe(verifyReservation1.R_parkingLot.Slot);
+                expect(response.body.R_parkingLot.No_Vehicle).toBe(verifyReservation1.R_parkingLot.No_Vehicle);
+			})
+	});
+
+	it('Visitor delete successfully', async () => {
+		return request
+			.delete('/admin/deleteVisitor/5')
+			.send({ V_ID: SampleVisitorUpdate1.V_ID, V_name: SampleVisitorUpdate1.V_name })
+			.expect('Content-Type', /text/)
+			.expect(200)
+			.then(response => {
+				expect(response.text).toBe("The visitor is deleted");
+			});
+	});
+
+	it('Visitor delete failed', async () => {
+		return request
+			.delete('/admin/deleteVisitor/5')
+			.send({ V_ID: SampleVisitorUpdate1.V_ID, V_name: SampleVisitorUpdate1.V_name })
+			.expect('Content-Type', /text/)
+			.expect(404)
+			.then(response => {
+				expect(response.text).toBe("Failed to delete");
+			});
+	});
+
+	// Admin test //
+
+	it('"New admin registration', async () => {
+		return request
+			.post('/security/registerAdmin')
+			.send(SampleAdmin1)
+			.expect('Content-Type', /text/)
+			.expect(200).then(response => {
+				expect(response.text).toBe("Admin Registeration Success");
+            });
+	});
+
+	it('"Admin registration fail', async () => {
+		return request
+			.post('/security/registerAdmin')
+			.send(SampleAdmin1)
+			.expect('Content-Type', /text/)
+			.expect(404).then(response => {
+				expect(response.text).toBe("The name is already in use!");
+            });
+	});
+
+	it('Admin login successfully', async () => {
+		return request
+			.post('/loginAdmin')
+			.send({ AdminName: SampleAdmin1.AdminName, AdminPassword: SampleAdmin1.AdminPassword })
+			.expect('Content-Type', /json/)
+			.expect(200)
+			.then(response => {
+				expect(response.body.AdminName).toBe(SampleAdmin1.AdminName);
+                expect(response.body.AdminEmail).toBe(SampleAdmin1.AdminEmail);
+                expect(response.body.AdminContact).toBe(SampleAdmin1.AdminContact);
+                expect(response.body.role).toBe("admin");
+			});
+	});
+
+	it('Admin login failed', async () => {
+		return request
+			.post('/loginAdmin')
+			.send({ AdminName: SampleAdmin1.AdminName, AdminPassword: "Adminwrongpassword" })
+			.expect('Content-Type', /text/)
+			.expect(404)
+			.then(response => {
+				expect(response.text).toBe("Login failed");
+			});
+	});
+
+	it('"General Info Admin update successfully', async () => {
+		return request
+			.patch('/admin/updateGeneralInfoAdmin/Ryan')
+			.send(SampleAdminUpdate1)
+			.expect('Content-Type', /json/)
+			.expect(200)
+			.then(response => {
+				expect(response.body.AdminName).toBe(SampleAdminUpdate1.AdminName);
+                expect(response.body.AdminEmail).toBe(SampleAdminUpdate1.AdminEmail);
+                expect(response.body.AdminContact).toBe(SampleAdminUpdate1.AdminContact);
+                expect(response.body.role).toBe("admin");
+			});
+	});
+
+	it('"Password Admin update successfully', async () => {
+		return request
+			.patch('/security/updatePasswordAdmin/Ryan')
+			.send({ AdminName: SampleAdmin1.AdminName, AdminPassword: SampleAdmin1.AdminPassword })
+			.expect('Content-Type', /text/)
+			.expect(200)
+			.then(response => {
+				expect(response.text).toBe("Password update successful");
+			});
+	});
+
+	it('Admin deleted successful', async () => {
+		return request
+			.delete('/security/deleteAdmin/Ryan')
+			.send({AdminName: SampleAdminUpdate1.AdminName})
+			.expect('Content-Type', /text/)
+			.expect(200)
+			.then(response => {
+				expect(response.text).toBe("The admin is deleted");
+			});
+	});
+
+	it('Admin deleted failed', async () => {
+		return request
+			.delete('/security/deleteAdmin/Ryan')
+			.send({AdminName: SampleAdminUpdate1.AdminName})
+			.expect('Content-Type', /text/)
+			.expect(404)
+			.then(response => {
+				expect(response.text).toBe("Failed to delete");
+			});
+	});
+
+	// Security //
+
+	it('New security registration', async () => {
+		return request
+			.post('/register/security')
+			.send(SampleSecurity1)
+			.expect('Content-Type', /text/)
+			.expect(200).then(response => {
+				expect(response.text).toBe("Security Registeration Success");
+            });
+	});
+
+	it('Security registration failed', async () => {
+		return request
+			.post('/register/security')
+			.send(SampleSecurity1)
+			.expect('Content-Type', /text/)
+			.expect(404).then(response => {
+				expect(response.text).toBe("The name is already in use!");
+            });
+	});
+
+	it('Security login successfully', async () => {
+		return request
+			.post('/loginSecurity')
+			.send({ SecurityName: SampleSecurity1.SecurityName, SecurityPassword: SampleSecurity1.SecurityPassword })
+			.expect('Content-Type', /json/)
+			.expect(200)
+			.then(response => {
+				expect(response.body.SecurityName).toBe(SampleSecurity1.SecurityName);
+                expect(response.body.SecurityEmail).toBe(SampleSecurity1.SecurityEmail);
+                expect(response.body.SecurityContact).toBe(SampleSecurity1.SecurityContact);
+                expect(response.body.role).toBe("security");
+			});
+	});
+
+	it('Security login failed', async () => {
+		return request
+			.post('/loginSecurity')
+			.send({ SecurityName: "WrongName", SecurityPassword: SampleSecurity1.SecurityPassword })
+			.expect('Content-Type', /text/)
+			.expect(404)
+			.then(response => {
+				expect(response.text).toBe("Login failed");
+			})
+	});
+
+	it('"General Info Security update successfully', async () => {
+		return request
+			.patch('/security/updateGeneralInfoSecurity/Peter')
+			.send(SampleSecurityUpdate1)
+			.expect('Content-Type', /json/)
+			.expect(200)
+			.then(response => {
+				expect(response.body.SecurityName).toBe(SampleSecurityUpdate1.SecurityName);
+                expect(response.body.SecurityEmail).toBe(SampleSecurityUpdate1.SecurityEmail);
+                expect(response.body.SecurityContact).toBe(SampleSecurityUpdate1.SecurityContact);
+                expect(response.body.role).toBe("security");
+			});
+	});
+
+	it('"Password Security update successfully', async () => {
+		return request
+			.patch('/security/updatePasswordSecurity/Peter')
+			.send({ SecurityName: SampleSecurity1.SecurityName, SecurityPassword: SampleSecurity1.SecurityPassword })
+			.expect('Content-Type', /text/)
+			.expect(200)
+			.then(response => {
+				expect(response.text).toBe("Password update successful");
+			});
+	});
+
+});
+
+
