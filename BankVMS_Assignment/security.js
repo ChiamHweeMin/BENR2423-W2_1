@@ -9,7 +9,7 @@ class Security {
 	
 	static async register(sample) {
 		// Check if security's name exists
-        const isExists = await secure.findOne({ SecurityName: sample.SecurityName })
+        	const isExists = await secure.findOne({ SecurityName: sample.SecurityName })
 		if (isExists) {
 			return { status: false }
 		} else {
@@ -17,7 +17,7 @@ class Security {
 			const passwordHash = bcrypt.hashSync(sample.SecurityPassword, 10);
 			// Store the admin info into database	
 			await secure.insertOne({
-                SecurityName: sample.SecurityName,
+                		SecurityName: sample.SecurityName,
 				SecurityPassword: passwordHash,
 				SecurityEmail: sample.SecurityEmail,
 				SecurityContact: sample.SecurityContact,
@@ -53,15 +53,15 @@ class Security {
 		if (isExists) {
 			// Update the fields except for SecurityName and SecurityPassword
 			await secure.updateOne({
-            	SecurityName: sample.SecurityName
-            }, { 
+            			SecurityName: sample.SecurityName
+           	 }, { 
 				$set: {
 					SecurityEmail: sample.SecurityEmail,
 					SecurityContact: sample.SecurityContact
 				} 
 			}).then (result => {
-                console.log(result)
-            })
+                		console.log(result)
+		    	})
 			return await secure.findOne({ SecurityName: sample.SecurityName })
 		}
 		else {
@@ -77,13 +77,13 @@ class Security {
 			const passwordHash = bcrypt.hashSync(password, 10);
 			// Update the new password
 			await secure.updateOne({
-            	SecurityName: name
-            }, { 
+            			SecurityName: name
+           		 }, { 
 				$set: {
 					SecurityPassword: passwordHash
 				} }).then (result => {
-                console.log(result)
-            })
+                			console.log(result)
+            			})
 			return { status: true }
 		}
 		else {
