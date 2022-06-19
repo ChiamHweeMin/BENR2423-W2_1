@@ -16,7 +16,7 @@ class Visitor {
 
 	static async register(sample) {
 		// Check if visitor ID exists
-        const isExists = await visitors.findOne({V_ID: sample.V_ID})
+        	const isExists = await visitors.findOne({V_ID: sample.V_ID})
 		if (isExists) {
 			console.log("The visitor already exits")
 			return { status: false }
@@ -25,14 +25,14 @@ class Visitor {
 			const passwordHash = bcrypt.hashSync(sample.V_password, 10);
 			// Store the visitor info into database	
 			await visitors.insertOne({
-                V_ID: sample.V_ID,
+                		V_ID: sample.V_ID,
 				V_name: sample.V_name,
 				V_age: sample.V_age,
 				V_gender: sample.V_gender,
-                V_ICnum: sample.V_ICnum,
-                V_email: sample.V_email,
+                		V_ICnum: sample.V_ICnum,
+                		V_email: sample.V_email,
 				V_contact: sample.V_contact,
-                V_blacklist: sample.V_blacklist,
+                		V_blacklist: sample.V_blacklist,
 				V_password: passwordHash,
 				role: 'visitor'
 			}).then (result => {
@@ -83,21 +83,21 @@ class Visitor {
 			// Update the fields 
 			const passwordHash = bcrypt.hashSync(sample.V_password, 10);
 			await visitors.updateOne({
-            	V_ID: sample.V_ID
-            }, { 
+            			V_ID: sample.V_ID
+            		}, { 
 				$set: {
 					V_name: sample.V_name,
 					V_age: sample.V_age,
 					V_gender: sample.V_gender,
-                	V_ICnum: sample.V_ICnum,
-                	V_email: sample.V_email,
+                			V_ICnum: sample.V_ICnum,
+                			V_email: sample.V_email,
 					V_contact: sample.V_contact,
-               		V_blacklist: sample.V_blacklist,
+               				V_blacklist: sample.V_blacklist,
 					V_password: passwordHash
 				} 
 			}).then (result => {
-                console.log(result)
-            })
+                		console.log(result)
+            		})
 			return await visitors.findOne({ V_ID: sample.V_ID })
 		}
 		else {
@@ -109,9 +109,9 @@ class Visitor {
 		const isExists = await visitors.findOne({ V_ID: vid, V_name: vname })
 		if (isExists) {
 			await visitors.deleteOne({ V_ID: vid, V_name: vname }).then (result => {
-                console.log(result.deletedCount)
-            })
-            return { status: "Deleted" }
+                		console.log(result.deletedCount)
+            		})
+            		return { status: "Deleted" }
 		}
 		return { status: "Not Found" }
 	}
