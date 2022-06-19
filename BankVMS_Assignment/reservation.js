@@ -121,9 +121,9 @@ class Reservation {
 		const isExists = await reservations.findOne({ V_ID: vid, V_name: vname })
 		if (isExists) {
 			await reservations.deleteOne({ V_ID: vid, V_name: vname }).then (result => {
-                console.log(result.deletedCount)
-            })
-            return { status: "Deleted" }
+                		console.log(result.deletedCount)
+            		})
+            		return { status: "Deleted" }
 		}
 		return { status: "Not Found" }
 	}
