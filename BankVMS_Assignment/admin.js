@@ -17,7 +17,7 @@ class Admin {
 	
 	 static async register(sample) {
 		// Check if admin's name exists
-        const isExists = await admins.findOne({ AdminName: sample.AdminName })
+        	const isExists = await admins.findOne({ AdminName: sample.AdminName })
 		if (isExists) {
 			return { status: false }
 		} else {
@@ -25,7 +25,7 @@ class Admin {
 			const passwordHash = bcrypt.hashSync(sample.AdminPassword, 10);
 			// Store the admin info into database	
 			await admins.insertOne({
-                AdminName: sample.AdminName,
+                		AdminName: sample.AdminName,
 				AdminPassword: passwordHash,
 				AdminEmail: sample.AdminEmail,
 				AdminContact: sample.AdminContact,
@@ -65,15 +65,15 @@ class Admin {
 		if (isExists) {
 			// Update the fields except for AdminName and AdminPassword
 			await admins.updateOne({
-            	AdminName: sample.AdminName
-            }, { 
+            			AdminName: sample.AdminName
+           		 }, { 
 				$set: {
 					AdminEmail: sample.AdminEmail,
 					AdminContact: sample.AdminContact
 				} 
 			}).then (result => {
-                console.log(result)
-            })
+               			 console.log(result)
+            		})
 			return await admins.findOne({ AdminName: sample.AdminName })
 		}
 		else {
@@ -89,13 +89,13 @@ class Admin {
 			const passwordHash = bcrypt.hashSync(password, 10);
 			// Update the new password
 			await admins.updateOne({
-            	AdminName: name
-            }, { 
+            			AdminName: name
+            		}, { 
 				$set: {
 					AdminPassword: passwordHash
-				} }).then (result => {
-                console.log(result)
-            })
+			} }).then (result => {
+                		console.log(result)
+           		 })
 			return { status: true }
 		}
 		else {
@@ -107,9 +107,9 @@ class Admin {
 		const isExists = await admins.findOne({ AdminName: name })
 		if (isExists) {
 			await admins.deleteOne({ AdminName: name }).then (result => {
-                console.log(result.deletedCount)
-            })
-            return { status: "Deleted" }
+                		console.log(result.deletedCount)
+           		 })
+            		return { status: "Deleted" }
 		}
 		return { status: "Not Found" }
 	}
