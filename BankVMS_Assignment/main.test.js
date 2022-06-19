@@ -227,9 +227,9 @@ describe('Express Route Test', function () {
 			.expect(200)
 			.then(response => {
 				expect(response.body.AdminName).toBe(existAdminUpdate.AdminName);
-                expect(response.body.AdminEmail).toBe(existAdminUpdate.AdminEmail);
-                expect(response.body.AdminContact).toBe(existAdminUpdate.AdminContact);
-                expect(response.body.role).toBe("admin");
+				expect(response.body.AdminEmail).toBe(existAdminUpdate.AdminEmail);
+				expect(response.body.AdminContact).toBe(existAdminUpdate.AdminContact);
+				expect(response.body.role).toBe("admin");
 			});
 	});
 
@@ -241,14 +241,14 @@ describe('Express Route Test', function () {
 			.expect('Content-Type', /json/)
 			.expect(200).then(response => {
 				expect(response.body.V_ID).toBe(SampleVisitor1.V_ID);
-                expect(response.body.V_name).toBe(SampleVisitor1.V_name);
-                expect(response.body.V_age).toBe(SampleVisitor1.V_age);
-                expect(response.body.V_gender).toBe(SampleVisitor1.V_gender);
-                expect(response.body.V_ICnum).toBe(SampleVisitor1.V_ICnum);
-                expect(response.body.V_email).toBe(SampleVisitor1.V_email);
-                expect(response.body.V_contact).toBe(SampleVisitor1.V_contact);
-                expect(response.body.V_blacklist).toBeFalsy();
-            });
+				expect(response.body.V_name).toBe(SampleVisitor1.V_name);
+				expect(response.body.V_age).toBe(SampleVisitor1.V_age);
+				expect(response.body.V_gender).toBe(SampleVisitor1.V_gender);
+				expect(response.body.V_ICnum).toBe(SampleVisitor1.V_ICnum);
+				expect(response.body.V_email).toBe(SampleVisitor1.V_email);
+				expect(response.body.V_contact).toBe(SampleVisitor1.V_contact);
+				expect(response.body.V_blacklist).toBeFalsy();
+           		 });
 	});
 
 	it('Register with duplicate visitor ID', async () => {
@@ -273,13 +273,13 @@ describe('Express Route Test', function () {
 			.expect(200)
 			.then(response => {
 				expect(response.body.V_ID).toBe(SampleVisitorUpdate1.V_ID);
-                expect(response.body.V_name).toBe(SampleVisitorUpdate1.V_name);
-                expect(response.body.V_age).toBe(SampleVisitorUpdate1.V_age);
-                expect(response.body.V_gender).toBe(SampleVisitorUpdate1.V_gender);
-                expect(response.body.V_ICnum).toBe(SampleVisitorUpdate1.V_ICnum);
-                expect(response.body.V_email).toBe(SampleVisitorUpdate1.V_email);
-                expect(response.body.V_contact).toBe(SampleVisitorUpdate1.V_contact);
-                expect(response.body.V_blacklist).toBe(SampleVisitorUpdate1.V_blacklist);
+				expect(response.body.V_name).toBe(SampleVisitorUpdate1.V_name);
+				expect(response.body.V_age).toBe(SampleVisitorUpdate1.V_age);
+				expect(response.body.V_gender).toBe(SampleVisitorUpdate1.V_gender);
+				expect(response.body.V_ICnum).toBe(SampleVisitorUpdate1.V_ICnum);
+				expect(response.body.V_email).toBe(SampleVisitorUpdate1.V_email);
+				expect(response.body.V_contact).toBe(SampleVisitorUpdate1.V_contact);
+				expect(response.body.V_blacklist).toBe(SampleVisitorUpdate1.V_blacklist);
 			});
 	});
 
@@ -291,14 +291,14 @@ describe('Express Route Test', function () {
 			.expect('Content-Type', /json/)
 			.expect(200).then(response => {
 				expect(response.body.V_ID).toBe(SampleVisitorUpdate1.V_ID);
-                expect(response.body.V_name).toBe(SampleVisitorUpdate1.V_name);
-                expect(response.body.V_age).toBe(SampleVisitorUpdate1.V_age);
-                expect(response.body.V_gender).toBe(SampleVisitorUpdate1.V_gender);
-                expect(response.body.V_ICnum).toBe(SampleVisitorUpdate1.V_ICnum);
-                expect(response.body.V_email).toBe(SampleVisitorUpdate1.V_email);
-                expect(response.body.V_contact).toBe(SampleVisitorUpdate1.V_contact);
-                expect(response.body.V_blacklist).toBe(SampleVisitorUpdate1.V_blacklist);
-            });
+				expect(response.body.V_name).toBe(SampleVisitorUpdate1.V_name);
+				expect(response.body.V_age).toBe(SampleVisitorUpdate1.V_age);
+				expect(response.body.V_gender).toBe(SampleVisitorUpdate1.V_gender);
+				expect(response.body.V_ICnum).toBe(SampleVisitorUpdate1.V_ICnum);
+				expect(response.body.V_email).toBe(SampleVisitorUpdate1.V_email);
+				expect(response.body.V_contact).toBe(SampleVisitorUpdate1.V_contact);
+				expect(response.body.V_blacklist).toBe(SampleVisitorUpdate1.V_blacklist);
+			});
 	});
 
 	it('View all visitor info', async () => {
@@ -320,13 +320,13 @@ describe('Express Route Test', function () {
 			.expect(200).then(response => {
 				expect(response.body.R_ID).toBe(Reservation1.R_ID);
 				expect(response.body.V_ID).toBe(Reservation1.V_ID);
-                expect(response.body.V_name).toBe(Reservation1.V_name);
-                expect(response.body.R_date).toBe(Reservation1.R_date);
-                expect(response.body.R_time).toBe(Reservation1.R_time);
-                expect(response.body.No_Counter).toBe(Reservation1.No_Counter);
-                expect(response.body.R_parkingLot.Slot).toBe(Reservation1.R_parkingLot.Slot);
-                expect(response.body.R_parkingLot.No_Vehicle).toBe(Reservation1.R_parkingLot.No_Vehicle);
-            });
+				expect(response.body.V_name).toBe(Reservation1.V_name);
+				expect(response.body.R_date).toBe(Reservation1.R_date);
+				expect(response.body.R_time).toBe(Reservation1.R_time);
+				expect(response.body.No_Counter).toBe(Reservation1.No_Counter);
+				expect(response.body.R_parkingLot.Slot).toBe(Reservation1.R_parkingLot.Slot);
+				expect(response.body.R_parkingLot.No_Vehicle).toBe(Reservation1.R_parkingLot.No_Vehicle);
+           		 });
 	});
 
 	it('Update reservation success', async () => {
@@ -339,13 +339,13 @@ describe('Express Route Test', function () {
 			.expect(200).then(response => {
 				expect(response.body.R_ID).toBe(verifyReservation1.R_ID);
 				expect(response.body.V_ID).toBe(verifyReservation1.V_ID);
-                expect(response.body.V_name).toBe(verifyReservation1.V_name);
-                expect(response.body.R_date).toBe(verifyReservation1.R_date);
-                expect(response.body.R_time).toBe(verifyReservation1.R_time);
-                expect(response.body.No_Counter).toBe(verifyReservation1.No_Counter);
-                expect(response.body.R_parkingLot.Slot).toBe(verifyReservation1.R_parkingLot.Slot);
-                expect(response.body.R_parkingLot.No_Vehicle).toBe(verifyReservation1.R_parkingLot.No_Vehicle);
-            });
+				expect(response.body.V_name).toBe(verifyReservation1.V_name);
+				expect(response.body.R_date).toBe(verifyReservation1.R_date);
+				expect(response.body.R_time).toBe(verifyReservation1.R_time);
+				expect(response.body.No_Counter).toBe(verifyReservation1.No_Counter);
+				expect(response.body.R_parkingLot.Slot).toBe(verifyReservation1.R_parkingLot.Slot);
+				expect(response.body.R_parkingLot.No_Vehicle).toBe(verifyReservation1.R_parkingLot.No_Vehicle);
+            		});
 	});
 
 	it('Delete reservation', async () => {
@@ -356,7 +356,7 @@ describe('Express Route Test', function () {
 			.expect('Content-Type', /text/)
 			.expect(200).then(response => {
 				expect(response.text).toBe("The reservation is deleted");
-            });
+            		});
 	});
 
 	it('Visitor delete successfully', async () => {
@@ -408,14 +408,14 @@ describe('Express Route Test', function () {
 			.send({ V_ID: existVisitor.V_ID })
 			.expect('Content-Type', /json/)
 			.expect(200).then(response => {
-                expect(response.body.R_ID).toBe(existReservation.R_ID);
-                expect(response.body.V_ID).toBe(existReservation.V_ID);
-                expect(response.body.V_name).toBe(existReservation.V_name);
-                expect(response.body.R_date).toBe(existReservation.R_date);
-                expect(response.body.R_time).toBe(existReservation.R_time);
-                expect(response.body.No_Counter).toBe(existReservation.No_Counter);
-                expect(response.body.R_parkingLot.Slot).toBe(existReservation.R_parkingLot.Slot);
-                expect(response.body.R_parkingLot.No_Vehicle).toBe(existReservation.R_parkingLot.No_Vehicle);
+				expect(response.body.R_ID).toBe(existReservation.R_ID);
+				expect(response.body.V_ID).toBe(existReservation.V_ID);
+				expect(response.body.V_name).toBe(existReservation.V_name);
+				expect(response.body.R_date).toBe(existReservation.R_date);
+				expect(response.body.R_time).toBe(existReservation.R_time);
+				expect(response.body.No_Counter).toBe(existReservation.No_Counter);
+				expect(response.body.R_parkingLot.Slot).toBe(existReservation.R_parkingLot.Slot);
+				expect(response.body.R_parkingLot.No_Vehicle).toBe(existReservation.R_parkingLot.No_Vehicle);
 			})
 	});
 
