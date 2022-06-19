@@ -879,6 +879,9 @@ app.get('/visitor/ReservationInfo/:V_ID', verifyToken, async (req, res) => {
 //                  Register, Login, Manage Admin collections, View Visitor Info                   //
 
 app.post('/register/security', async (req, res) => {
+/* This endpoint is for registeration of security without any authentication, however, this endpoint
+ would not be provided in reality, it is only used for someone who want to test the whole flow of Bank
+ Visitor Management System by themselves */
 	console.log("Security registeration:")
 	console.log(req.body);
 	schemaSecurity = {

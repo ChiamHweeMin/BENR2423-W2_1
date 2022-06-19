@@ -1,0 +1,34 @@
+{
+    "AdminName": "Gary",
+    "AdminPassword": "Garypassword",
+    "AdminEmail": "gary123@gmail.com",
+    "AdminContact": "016-778 9121"
+}
+
+{
+    "AdminName": "Husna",
+    "AdminPassword": "Husnapassword",
+    "AdminEmail": "husna456@gmail.com",
+    "AdminContact": "010-3109875"
+}
+
+{
+    "AdminName": "Diena",
+    "AdminPassword": "Dienapassword",
+    "AdminEmail": "diena505@gmail.com",
+    "AdminContact": "012-3674502"
+}
+
+{
+    "AdminName": "Intan",
+    "AdminPassword": "Intanpassword",
+    "AdminEmail": "intan900@gmail.com",
+    "AdminContact": "013-72560823"
+}
+
+{
+    "AdminName": "Afiqah",
+    "AdminPassword": "Afiqahpassword",
+    "AdminEmail": "afiqah734@gmail.com",
+    "AdminContact": "010-2854084"
+}

@@ -1,0 +1,272 @@
+{
+    "R_ID": 1001,
+    "V_ID": 3005,     
+    "V_name": "Tonny",   
+    "R_date": "2022-10-05",
+    "R_time": "15:00",
+    "No_Counter": 4,
+    "R_parkingLot": {
+        "Slot": "A16",
+        "No_Vehicle": "YIW 5555"
+    }
+}
+
+{
+    "R_ID": 1002 ,
+    "V_ID": 2001 ,     
+    "V_name": "Melly",   
+    "R_date": "2022-09-13",
+    "R_time": "11:00",
+    "No_Counter": 8 ,
+    "R_parkingLot": {
+        "Slot": "C12",
+        "No_Vehicle": "BCX 444"
+    }
+}
+
+{
+    "R_ID": 1003 ,
+    "V_ID": 2003 ,     
+    "V_name": "Nisa",   
+    "R_date": "2022-10-13",
+    "R_time": "10:30,
+    "No_Counter": 3 ,
+    "R_parkingLot": {
+        "Slot": "C11",
+        "No_Vehicle": "BCG 1164"
+    }
+}
+
+{
+    "R_ID": 1004 ,
+    "V_ID": 2004 ,     
+    "V_name": "Pavin",   
+    "R_date": "2022-06-11",
+    "R_time": "14:00",
+    "No_Counter": 5 ,
+    "R_parkingLot": {
+        "Slot": "B11",
+        "No_Vehicle": "PFG 1123"
+    }
+}
+
+{
+    "R_ID": 1005 ,
+    "V_ID": 2005 ,     
+    "V_name": "Ali",   
+    "R_date": "2022-09-27",
+    "R_time": "15:15",
+    "No_Counter": 3 ,
+    "R_parkingLot": {
+        "Slot": "B10,
+        "No_Vehicle": "PFG 5217"
+    }
+}
+
+{
+    "R_ID": 1006 ,
+    "V_ID": 2006 ,     
+    "V_name": "Ahmad",   
+    "R_date": "2022-08-24",
+    "R_time": "10:00",
+    "No_Counter":  $,
+    "R_parkingLot": {
+        "Slot": "A02",
+        "No_Vehicle": "DFR 8998"
+    }
+}
+
+{
+    "R_ID": 1007,
+    "V_ID":  2007,     
+    "V_name": "Chong",   
+    "R_date": "2022-05-10",
+    "R_time": "16:00",
+    "No_Counter":  2,
+    "R_parkingLot": {
+        "Slot": "C02",
+        "No_Vehicle": "MCX 1266"
+    }
+}
+
+{
+    "R_ID": 1008 ,
+    "V_ID": 2008 ,     
+    "V_name": "Adibah",   
+    "R_date": "2022-12-04",
+    "R_time": "17:00",
+    "No_Counter":  6,
+    "R_parkingLot": {
+        "Slot": "B03",
+        "No_Vehicle": "JDT 989"
+    }
+}
+
+{
+    "R_ID": 1009 ,
+    "V_ID":  2009,     
+    "V_name": "Gan",   
+    "R_date": "2022-08-17",
+    "R_time": "09:30",
+    "No_Counter":  7,
+    "R_parkingLot": {
+        "Slot": "B03",
+        "No_Vehicle": "BCY 567"
+    }
+}
+
+{
+    "R_ID": 1010 ,
+    "V_ID":  2010,     
+    "V_name": "Typa",   
+    "R_date": "2022-07-10",
+    "R_time": "09:00",
+    "No_Counter":  1,
+    "R_parkingLot": {
+        "Slot": "A01",
+        "No_Vehicle": "KVX 7834"
+    }
+}
+
+{
+    "R_ID": 1011 ,
+    "V_ID":  2011,     
+    "V_name": "Alip",   
+    "R_date": "2022-08-01",
+    "R_time": "16:15",
+    "No_Counter":  4,
+    "R_parkingLot": {
+        "Slot": "A02",
+        "No_Vehicle": "JBW 8181"
+    }
+}
+
+{
+    "R_ID":  1012,
+    "V_ID":  2012,     
+    "V_name": "Mira",   
+    "R_date": "2022-10-03",
+    "R_time": "17:00",
+    "No_Counter":  3,
+    "R_parkingLot": {
+        "Slot": "C02",
+        "No_Vehicle": "RTK 2001"
+    }
+}
+
+{
+    "R_ID":  1013,
+    "V_ID":  2013,     
+    "V_name": "Ainin",   
+    "R_date": "2022-11-11",
+    "R_time": "11:00",
+    "No_Counter":  1,
+    "R_parkingLot": {
+        "Slot": "A01",
+        "No_Vehicle": "KVN 778"
+    }
+}
+
+{
+    "R_ID": 1014 ,
+    "V_ID":  2014,     
+    "V_name": "Keo",   
+    "R_date": "2022-10-29",
+    "R_time": "12:00",
+    "No_Counter":  3,
+    "R_parkingLot": {
+        "Slot": "C01",
+        "No_Vehicle": "ANY 349"
+    }
+}
+
+{
+    "R_ID": 1015 ,
+    "V_ID":  2015,     
+    "V_name": "Aina",   
+    "R_date": "2022-05-31",
+    "R_time": "17:00",
+    "No_Counter":  2,
+    "R_parkingLot": {
+        "Slot": "C01",
+        "No_Vehicle": "AWQ 2323"
+    }
+}
+
+{
+    "R_ID": 1016 ,
+    "V_ID": 2016 ,     
+    "V_name": "Weijun",   
+    "R_date": "2022-08-20",
+    "R_time": "16:00",
+    "No_Counter":  8,
+    "R_parkingLot": {
+        "Slot": "B02",
+        "No_Vehicle": "BCF 567"
+    }
+}
+
+{
+    "R_ID":  1017,
+    "V_ID": 2017 ,     
+    "V_name": "Jiveya",   
+    "R_date": "2022-09-23",
+    "R_time": "14:00",
+    "No_Counter":  6,
+    "R_parkingLot": {
+        "Slot": "A05",
+        "No_Vehicle": "WWE 897"
+    }
+}
+
+{
+    "R_ID":  1018,
+    "V_ID": 2018 ,     
+    "V_name": "Theevan",   
+    "R_date": "2022-03-07",
+    "R_time": "17:30",
+    "No_Counter":  6,
+    "R_parkingLot": {
+        "Slot": "C04",
+        "No_Vehicle": "BCR 554"
+    }
+}
+
+{
+    "R_ID": 1019 ,
+    "V_ID":  2019,     
+    "V_name": "Raj",   
+    "R_date": "2022-07-23",
+    "R_time": "16:00",
+    "No_Counter": 3 ,
+    "R_parkingLot": {
+        "Slot": "B02",
+        "No_Vehicle": "BCD 6565"
+    }
+}
+
+{
+    "R_ID": 1020 ,
+    "V_ID":  2020,     
+    "V_name": "Hanyi",   
+    "R_date": "2022-03-23",
+    "R_time": "10:00",
+    "No_Counter":  4,
+    "R_parkingLot": {
+        "Slot": "A04",
+        "No_Vehicle": "ATB 767"
+    }
+}
+
+{
+    "R_ID": 1021 ,
+    "V_ID":  2021,     
+    "V_name": "Izdihar",   
+    "R_date": "2022-10-09",
+    "R_time": "17:00",
+    "No_Counter":  1,
+    "R_parkingLot": {
+        "Slot": "A05",
+        "No_Vehicle": "JQA 9212"
+    }
+}
